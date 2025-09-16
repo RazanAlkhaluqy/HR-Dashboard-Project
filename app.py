@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3
 import streamlit as st
-import plotly.express as px
+import plotly.express as px  
 
 df = pd.read_csv('WA_Fn-UseC_-HR-Employee-Attrition.csv') 
 # #  local SQLite database file
@@ -23,7 +23,7 @@ results = cursor.fetchall()
 print("SQL:", results[0][0])
 # Pandas way
 employees=df[df['Attrition'] == 'No'].shape[0]
-print("Pandas:", not_left_count)
+print("Pandas:", employees)
 
 
 
@@ -94,7 +94,6 @@ print(f"{best_dept}: {best_rating:.2f}")
 # 6. Attrition rate by job role and department, and which roles/departments have the highest turnover
 
 print("6. Attrition rate by job role and department")
-
 # SQL way
 query6 = """
 SELECT Department, JobRole,
@@ -118,7 +117,6 @@ for idx, rate in attrition_rate.sort_values(ascending=False).items():
 # 7. Is there a correlation between monthly income and attrition?
 
 print("7. Correlation between monthly income and attrition")
-
 # SQL way
 query7 = """
 SELECT Attrition, AVG(MonthlyIncome)
@@ -180,17 +178,38 @@ for dept, role, edu, tenure, rate, count in results:
     print(f"{dept} | {role} | Education: {edu} | Tenure: {tenure} | Attrition Rate: {rate}% | Employees: {count}")
 
 # Pandas way
-df['TenureGroup'] = pd.cut(df['YearsAtCompany'], bins=[-1,2,6,100], labels=['<3','3-6','>6'])
-seg_attrition = df.groupby(['Department','JobRole','Education','TenureGroup'])['Attrition'].value_counts().unstack().fillna(0)
-seg_attrition['AttritionRate'] = (seg_attrition['Yes'] / seg_attrition.sum(axis=1) * 100).round(2)
-seg_attrition['EmployeeCount'] = seg_attrition.sum(axis=1)
-top_segments = seg_attrition.sort_values(['AttritionRate','EmployeeCount'], ascending=[False,False]).head(10)
-print("Pandas:")
-for idx, row in top_segments.iterrows():
-    print(f"{idx[0]} | {idx[1]} | Education: {idx[2]} | Tenure: {idx[3]} | Attrition Rate: {row['AttritionRate']}% | Employees: {row['EmployeeCount']}")
+# df['TenureGroup'] = pd.cut(df['YearsAtCompany'], bins=[-1,2,6,100], labels=['<3','3-6','>6'])
+# seg_attrition = df.groupby(['Department','JobRole','Education','TenureGroup'])['Attrition'].value_counts().unstack().fillna(0)
+# seg_attrition['AttritionRate'] = (seg_attrition['Yes'] / seg_attrition.sum(axis=1) * 100).round(2)
+# seg_attrition['EmployeeCount'] = seg_attrition.sum(axis=1)
+# top_segments = seg_attrition.sort_values(['AttritionRate','EmployeeCount'], ascending=[False,False]).head(10)
+# print("Pandas:")
+# for idx, row in top_segments.iterrows():
+#     print(f"{idx[0]} | {idx[1]} | Education: {idx[2]} | Tenure: {idx[3]} | Attrition Rate: {row['AttritionRate']}% | Employees: {row['EmployeeCount']}")
+# Count employees per segment
+df['TenureGroup'] = pd.cut(
+    df['YearsAtCompany'], 
+    bins=[-1, 2, 6, 100],   # <3, 3-6, >6
+    labels=['<3','3-6','>6']
+)
+seg_attrition = (
+    df.groupby(['Department', 'JobRole', 'Education', 'TenureGroup'])
+      ['Attrition']
+      .value_counts()
+      .unstack(fill_value=0)  # Split Yes/No into columns
+)
+# Calculate total employees & attrition rate
+seg_attrition['Employees'] = seg_attrition.sum(axis=1)
+seg_attrition['Attrition Rate'] = seg_attrition['Yes'] / seg_attrition['Employees'] * 100
+# Reset index for readability
+seg_attrition = seg_attrition.reset_index()
+# Sort by highest attrition rate
+seg_attrition = seg_attrition.sort_values(by='Attrition Rate', ascending=False)
 
 
 
+
+# Dashboard----------------------------------------------------------#
 st.title("HR Employee Attrition Dashboard")
 
 # Show basic dataset info
@@ -257,12 +276,18 @@ st.dataframe(filtered_df)
 
 # filter using SQL query
 query = "SELECT * FROM employee WHERE Department = ?"
-cursor = sqlite3.connect('hr.db').cursor()
+conn = sqlite3.connect('hr.db')
+cursor = conn.cursor()
 cursor.execute(query, (selected_dept,))
 filtered_sql = cursor.fetchall()
-filtered_sql_df = pd.DataFrame(filtered_sql, columns=df.columns)
+# ✅ get real column names from SQLite
+col_names = [description[0] for description in cursor.description]
+filtered_sql_df = pd.DataFrame(filtered_sql, columns=col_names)
 st.write(f"Employees in {selected_dept} Department (from DB):")
 st.dataframe(filtered_sql_df)
+
+
+
 
 # -------- Add New Employee Form -------- #
 st.header("Add New Employee")

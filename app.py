@@ -4,6 +4,7 @@ import streamlit as st
 import plotly.express as px  
 
 df = pd.read_csv('WA_Fn-UseC_-HR-Employee-Attrition.csv') 
+
 # #  local SQLite database file
 conn = sqlite3.connect('hr.db') 
 cursor = conn.cursor()

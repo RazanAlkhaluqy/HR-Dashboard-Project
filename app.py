@@ -92,7 +92,6 @@ print("Pandas:")
 print(f"{best_dept}: {best_rating:.2f}")
 
 # 6. Attrition rate by job role and department, and which roles/departments have the highest turnover
-
 print("6. Attrition rate by job role and department")
 # SQL way
 query6 = """
@@ -115,7 +114,6 @@ for idx, rate in attrition_rate.sort_values(ascending=False).items():
     print(f"{idx[0]} - {idx[1]}: {rate}%")
 
 # 7. Is there a correlation between monthly income and attrition?
-
 print("7. Correlation between monthly income and attrition")
 # SQL way
 query7 = """
@@ -135,7 +133,6 @@ for attrition, avg_income in income_by_attrition.items():
     print(f"{attrition}: ${avg_income:.2f}")
 
 # 8. How does performance rating relate to attrition?
-
 print("8. Performance rating vs attrition")
 # SQL way
 query8 = """
@@ -154,57 +151,35 @@ perf_attrition = df.groupby(['PerformanceRating', 'Attrition']).size().unstack(f
 print("Pandas:")
 print(perf_attrition)
 
-#9Which employee segments (by Department, Job Role, Education, and Years at Company) are at highest risk of attrition?
-print("Which employee segments are at highest risk of attrition?")
-# SQL way
-query = """
-SELECT Department, JobRole, Education, 
-       CASE 
-           WHEN YearsAtCompany < 3 THEN '<3'
-           WHEN YearsAtCompany BETWEEN 3 AND 6 THEN '3-6'
-           ELSE '>6'
-       END AS TenureGroup,
+# 9. How do Job Role and Overtime status affect employee attrition?
+st.subheader("Job Role and Overtime vs Attrition")
+# SQL version (optional)
+query10 = """
+SELECT JobRole, OverTime,
        ROUND(SUM(CASE WHEN Attrition='Yes' THEN 1 ELSE 0 END)*100.0/COUNT(*),2) AS AttritionRate,
-       COUNT(*) as EmployeeCount
+       COUNT(*) AS EmployeeCount
 FROM employee
-GROUP BY Department, JobRole, Education, TenureGroup
-ORDER BY AttritionRate DESC, EmployeeCount DESC
-LIMIT 10;
-"""
-cursor.execute(query)
+GROUP BY JobRole, OverTime
+ORDER BY AttritionRate DESC, EmployeeCount DESC;"""
+cursor.execute(query10)
 results = cursor.fetchall()
-print("SQL:")
-for dept, role, edu, tenure, rate, count in results:
-    print(f"{dept} | {role} | Education: {edu} | Tenure: {tenure} | Attrition Rate: {rate}% | Employees: {count}")
 
-# Pandas way
-# df['TenureGroup'] = pd.cut(df['YearsAtCompany'], bins=[-1,2,6,100], labels=['<3','3-6','>6'])
-# seg_attrition = df.groupby(['Department','JobRole','Education','TenureGroup'])['Attrition'].value_counts().unstack().fillna(0)
-# seg_attrition['AttritionRate'] = (seg_attrition['Yes'] / seg_attrition.sum(axis=1) * 100).round(2)
-# seg_attrition['EmployeeCount'] = seg_attrition.sum(axis=1)
-# top_segments = seg_attrition.sort_values(['AttritionRate','EmployeeCount'], ascending=[False,False]).head(10)
-# print("Pandas:")
-# for idx, row in top_segments.iterrows():
-#     print(f"{idx[0]} | {idx[1]} | Education: {idx[2]} | Tenure: {idx[3]} | Attrition Rate: {row['AttritionRate']}% | Employees: {row['EmployeeCount']}")
-# Count employees per segment
-df['TenureGroup'] = pd.cut(
-    df['YearsAtCompany'], 
-    bins=[-1, 2, 6, 100],   # <3, 3-6, >6
-    labels=['<3','3-6','>6']
-)
-seg_attrition = (
-    df.groupby(['Department', 'JobRole', 'Education', 'TenureGroup'])
-      ['Attrition']
+# Convert SQL results to DataFrame for Streamlit
+sql_df = pd.DataFrame(results, columns=['JobRole', 'OverTime', 'AttritionRate', 'EmployeeCount'])
+st.write("Attrition by Job Role and Overtime (from SQL):")
+st.dataframe(sql_df)
+
+# Pandas calculation
+job_ot_attrition = (
+    df.groupby(['JobRole', 'OverTime'])['Attrition']
       .value_counts()
-      .unstack(fill_value=0)  # Split Yes/No into columns
+      .unstack(fill_value=0)
 )
-# Calculate total employees & attrition rate
-seg_attrition['Employees'] = seg_attrition.sum(axis=1)
-seg_attrition['Attrition Rate'] = seg_attrition['Yes'] / seg_attrition['Employees'] * 100
+job_ot_attrition['EmployeeCount'] = job_ot_attrition.sum(axis=1)
+job_ot_attrition['AttritionRate'] = (job_ot_attrition['Yes'] / job_ot_attrition['EmployeeCount'] * 100).round(2)
+
 # Reset index for readability
-seg_attrition = seg_attrition.reset_index()
-# Sort by highest attrition rate
-seg_attrition = seg_attrition.sort_values(by='Attrition Rate', ascending=False)
+job_ot_attrition = job_ot_attrition.reset_index()
 
 
 
@@ -254,12 +229,55 @@ st.table(top5_df)
 st.subheader("Department with Highest Average Performance Rating")
 query5 = """
 SELECT Department, AVG(PerformanceRating) as AvgPerformanceRating
-FROM employee GROUP BY Department ORDER BY AvgPerformanceRating DESC LIMIT 1;
-"""
+FROM employee GROUP BY Department ORDER BY AvgPerformanceRating DESC LIMIT 1;"""
 cursor.execute(query5)
 best_dept = cursor.fetchone()
 if best_dept:
     st.success(f"{best_dept[0]}: {best_dept[1]:.2f}")
+
+# 6. Attrition Rate by Job Role and Department (Pandas)
+attrition_counts = df.groupby(['Department', 'JobRole'])['Attrition'].value_counts().unstack().fillna(0)
+# If 'Yes' is not in columns, add it with zeros
+if 'Yes' not in attrition_counts.columns:
+    attrition_counts['Yes'] = 0
+attrition_rate = (attrition_counts['Yes'] / attrition_counts.sum(axis=1) * 100).round(2)
+attrition_rate_df = attrition_rate.reset_index().rename(columns={0: 'AttritionRate'})
+attrition_rate_df['AttritionRate'] = attrition_rate_df[0] if 0 in attrition_rate_df.columns else attrition_rate_df['AttritionRate']
+st.write("Attrition Rate by Job Role and Department ")
+st.dataframe(attrition_rate_df[['Department', 'JobRole', 'AttritionRate']].sort_values('AttritionRate', ascending=False))
+
+# 7. Is there a correlation between monthly income and attrition?
+st.subheader("Average Monthly Income by Attrition Status ")
+income_by_attrition = df.groupby('Attrition')['MonthlyIncome'].mean().reset_index()
+income_by_attrition['MonthlyIncome'] = income_by_attrition['MonthlyIncome'].round(2)
+st.dataframe(income_by_attrition)
+# Optional: Visualize with a bar chart
+st.bar_chart(income_by_attrition.set_index('Attrition'))
+
+# 8. How does performance rating relate to attrition?
+st.subheader("Performance Rating vs Attrition ")
+perf_attrition = df.groupby(['PerformanceRating', 'Attrition']).size().unstack(fill_value=0).reset_index()
+st.dataframe(perf_attrition)
+# Optional: Visualize with a bar chart
+st.bar_chart(perf_attrition.set_index('PerformanceRating'))
+
+# 9. Job Role and Overtime status affect employee attrition
+# Show Pandas results
+st.write("Attrition by Job Role and Overtime ")
+st.dataframe(job_ot_attrition[['JobRole', 'OverTime', 'AttritionRate', 'EmployeeCount']].sort_values('AttritionRate', ascending=False))
+
+# Visualization: Bar chart using Plotly
+import plotly.express as px
+fig = px.bar(
+    job_ot_attrition,
+    x='JobRole',
+    y='AttritionRate',
+    color='OverTime',
+    barmode='group',
+    text='AttritionRate',
+    title='Attrition Rate by Job Role and Overtime'
+)
+st.plotly_chart(fig)
 
 
 #--------filter--------------------------------------#
@@ -267,12 +285,6 @@ if best_dept:
 st.subheader("Filter Employees by Department")
 departments = df['Department'].unique()
 selected_dept = st.selectbox("Select Department", departments)
-
-# Filter DataFrame by selected department
-filtered_df = df[df['Department'] == selected_dept]
-st.write(f"Employees in {selected_dept} Department:")
-st.dataframe(filtered_df)
-
 
 # filter using SQL query
 query = "SELECT * FROM employee WHERE Department = ?"

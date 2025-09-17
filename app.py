@@ -163,12 +163,10 @@ GROUP BY JobRole, OverTime
 ORDER BY AttritionRate DESC, EmployeeCount DESC;"""
 cursor.execute(query10)
 results = cursor.fetchall()
-
 # Convert SQL results to DataFrame for Streamlit
 sql_df = pd.DataFrame(results, columns=['JobRole', 'OverTime', 'AttritionRate', 'EmployeeCount'])
 st.write("Attrition by Job Role and Overtime (from SQL):")
 st.dataframe(sql_df)
-
 # Pandas calculation
 job_ot_attrition = (
     df.groupby(['JobRole', 'OverTime'])['Attrition']
@@ -177,7 +175,6 @@ job_ot_attrition = (
 )
 job_ot_attrition['EmployeeCount'] = job_ot_attrition.sum(axis=1)
 job_ot_attrition['AttritionRate'] = (job_ot_attrition['Yes'] / job_ot_attrition['EmployeeCount'] * 100).round(2)
-
 # Reset index for readability
 job_ot_attrition = job_ot_attrition.reset_index()
 
@@ -357,11 +354,6 @@ with st.form("update_income_form"):
             conn.close()
         except Exception as e:
             st.error(f"Error updating income: {e}")
-
-
-
-
-
 
 
 

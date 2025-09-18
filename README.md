@@ -16,8 +16,7 @@ In this project, we:
 
 ---
 ## 🔑 Key Features
-- Compare attrition rates across **job roles, overtime, and education**
-- Identify high-risk employee segments
+- Compare attrition rates across multiple factors
 - Visualize attrition trends with interactive charts
 - SQL + Pandas dual analysis for validation
 

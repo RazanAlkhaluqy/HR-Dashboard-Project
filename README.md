@@ -62,4 +62,5 @@ If not, run your data preparation notebook (analysis.ipynb) first to generate it
 ```bash
 streamlit run dashboard.py
 ```
+### Dashboard page
 

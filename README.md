@@ -44,8 +44,9 @@ conda activate hrproject
 
 ### 3. Install dependencies
 ---
+
 pip install -r requirements.txt
----
+
 (if you don’t have a requirements.txt, you can create one with pip freeze > requirements.txt)
 
 ### 4. Set up the database
@@ -56,7 +57,7 @@ If not, run your data preparation notebook (analysis.ipynb) first to generate it
 ### 5. Run the app (Streamlit)
 ---
 streamlit run app.py
----
+
 ### 6. Explore the Dashboard
 
 Open the link shown in the terminal (usually http://localhost:8501) to interact with the HR Dashboard.

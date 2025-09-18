@@ -63,4 +63,7 @@ If not, run your data preparation notebook (analysis.ipynb) first to generate it
 streamlit run dashboard.py
 ```
 ### Dashboard page
+![Dashboard Screenshot](image of dashboard/dashboard1.png)
+![Dashboard Screenshot](image of dashboard/dashboard2.png)
+
 

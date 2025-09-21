@@ -26,7 +26,7 @@ In this project, we:
 - Perform analysis with **Pandas**
 - Visualize results in an interactive **Streamlit dashboard**
 ---
-##  Data Source & Dictionary
+## Data Source & Dictionary
 Dataset Source: ( https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
 
 ---

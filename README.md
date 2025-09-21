@@ -13,10 +13,10 @@ This project analyzes employee attrition using **SQL, Python(Pandas), and Stream
 - [Project Overview](#-Project-Overview)
 - [Data Source & Dictionary](#data-source--dictionary)
 - [Key Features](#key-features)
-- [Tech Stack](#-tech-stack)
+- [Tech Stack](#tech-stack)
 - [Installation & Usage](#-installation--usage)
 - [License](#license)
-- [Author & Acknowledgments](#-author--acknowledgments)
+- [Author and Acknowledgments](#author-acknowledgments)
 ---
 ## 📊 Project Overview
 Employee attrition (turnover) is a critical challenge for organizations.  

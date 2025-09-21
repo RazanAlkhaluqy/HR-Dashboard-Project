@@ -50,7 +50,12 @@ This dataset contains employee information from Atlas Lab, including HR attribut
 ---
 
 ## 🛠️Tech Stack
-- **Python** (Pandas, SQLite3, Matplotlib/Seaborn)
+- **Python** :
+   - `pandas` – data manipulation and analysis  
+  - `numpy` – numerical operations  
+  - `matplotlib` & `seaborn` – static visualizations  
+  - `plotly` – interactive charts  
+  - `scikit-learn` – machine learning models
 - **SQL** (for querying HR database)
 - **Streamlit** (for interactive dashboard)
 - **VSCode** (development environment)

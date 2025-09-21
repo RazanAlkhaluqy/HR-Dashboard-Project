@@ -1,11 +1,10 @@
 # HR-Dashboard-Project
 🧑‍💼 HR Employee Attrition Analysis
-
 ![Python](https://img.shields.io/badge/Python-3.10-blue.svg)  
 ![Streamlit](https://img.shields.io/badge/Framework-Streamlit-red)  
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)    
 An interactive HR analytics dashboard that empowers the HR department to analyze employee data, uncover key attrition insights, and make data-driven retention decisions.
-This project analyzes employee attrition using **SQL, Pandas, and Streamlit**.
+This project analyzes employee attrition using **SQL, Python(Pandas), and Streamlit**.
 
 ---
 ## Table of Contents

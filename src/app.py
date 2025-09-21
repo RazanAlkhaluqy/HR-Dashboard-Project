@@ -9,7 +9,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Load dataset
-df = pd.read_csv('WA_Fn-UseC_-HR-Employee-Attrition.csv') 
+df = pd.read_csv('data/WA_Fn-UseC_-HR-Employee-Attrition.csv') 
 
 # #  local SQLite database file
 conn = sqlite3.connect('data/hr.db')  

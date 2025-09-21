@@ -10,7 +10,7 @@ This project analyzes employee attrition using **SQL, Python(Pandas), and Stream
 
 ---
 ## Table of Contents
-- [Project Overview](##---Project-Overview)
+- 📊[Project Overview](#-Project-Overview)
 - [Key Features](#key-features)
 - [Tech Stack](#tech-stack)
 - [Installation & Usage](#installation--usage)

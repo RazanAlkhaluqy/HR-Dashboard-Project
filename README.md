@@ -1,9 +1,19 @@
 # HR-Dashboard-Project
 🧑‍💼 HR Employee Attrition Analysis
 
-This project analyzes employee attrition using **SQL, Pandas, and Streamlit**.  
-The goal is to identify key factors that affect employee turnover and provide insights to help HR focus on retention strategies.
+![Python](https://img.shields.io/badge/Python-3.10-blue.svg)  
+![Streamlit](https://img.shields.io/badge/Framework-Streamlit-red)  
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)    
+An interactive HR analytics dashboard that empowers the HR department to analyze employee data, uncover key attrition insights, and make data-driven retention decisions.
+This project analyzes employee attrition using **SQL, Pandas, and Streamlit**.
 
+---
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Key Features](#key-features)
+- [Tech Stack](#tech-stack)
+- [Installation & Usage](#installation--usage)
+- [License](#license)
 ---
 ## 📊 Project Overview
 Employee attrition (turnover) is a critical challenge for organizations.  
@@ -15,8 +25,7 @@ In this project, we:
 - Visualize results in an interactive **Streamlit dashboard**
 ---
 ##  Data Source & Dictionary
-Dataset Source: [Kaggle - HR Analytics Employee Attrition Dataset](https://www.kaggle.com/ 
-https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
+Dataset Source: ( https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
 
 ---
 ## 🔑 Key Features
@@ -66,6 +75,10 @@ If not, run your data preparation notebook (analysis.ipynb) first to generate it
 ```bash
 streamlit run dashboard.py
 ```
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
 ### Dashboard page
 ![Dashboard Screenshot](images/dashboard1.png)
 ![Dashboard Screenshot](images/dashboard2.png)

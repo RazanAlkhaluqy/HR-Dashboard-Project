@@ -84,7 +84,7 @@ streamlit run dashboard.py
 ---
 ## 📜 License
 
-- The **code** in this repository is licensed under the [MIT License](MIT-LICENSE).
+- The **code** in this repository is licensed under the [MIT License](LICENSE).
 - The **dataset** used in this project is licensed under the [Open Data Commons Database License (ODbL 1.0)](https://opendatacommons.org/licenses/dbcl/1-0/).  
   Please make sure to follow the dataset’s license terms if you reuse or distribute the data.
 

@@ -16,6 +16,9 @@ This project analyzes employee attrition using **SQL, Python(Pandas), and Stream
 - [Installation & Usage](#-installation--usage)
 - [License](#-license)
 - [Author & Acknowledgments](#author--acknowledgments)
+- [Tech Stack](#tech-stack)
+- [Author & Acknowledgments](#author-acknowledgments)
+
 ---
 ## 📊 Project Overview
 Employee attrition (turnover) is a major challenge for organizations, as it can lead to increased recruitment costs, loss of institutional knowledge, and reduced team productivity.  
@@ -49,7 +52,7 @@ This dataset contains employee information from Atlas Lab, including HR attribut
 
 ---
 
-## 🛠️Tech Stack
+## Tech Stack
 - **Python** :
    - `pandas` – data manipulation and analysis  
   - `numpy` – numerical operations  
@@ -95,7 +98,7 @@ If not, run your data preparation notebook (analysis.ipynb) first to generate it
 streamlit run dashboard.py
 ```
 ---
-## 👩‍💻Author & Acknowledgments
+## Author& Acknowledgments
 
 **Author:** Razan Zaki  
 

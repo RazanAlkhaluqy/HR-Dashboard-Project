@@ -12,10 +12,11 @@ This project analyzes employee attrition using **SQL, Python(Pandas), and Stream
 ## Table of Contents
 - [Project Overview](#-Project-Overview)
 - [Data Source & Dictionary](#data-source--dictionary)
-- [Key Features](#-key-features)
+- [Key Features](#key-features)
 - [Tech Stack](#-tech-stack)
 - [Installation & Usage](#-installation--usage)
-- [License](#-license)
+- [License](#license)
+- [Author & Acknowledgments](#author--acknowledgments)
 ---
 ## 📊 Project Overview
 Employee attrition (turnover) is a critical challenge for organizations.  
@@ -30,7 +31,7 @@ In this project, we:
 Dataset Source: ( https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
 
 ---
-## 🔑 Key Features
+## 🔑Key Features
 - Compare attrition rates across multiple factors
 - Visualize attrition trends with interactive charts
 - SQL + Pandas dual analysis for validation
@@ -77,6 +78,10 @@ If not, run your data preparation notebook (analysis.ipynb) first to generate it
 ```bash
 streamlit run dashboard.py
 ```
+---
+### 6. Author & Acknowledgments
+
+---
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 

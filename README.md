@@ -38,7 +38,7 @@ Dataset Source: ( https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️Tech Stack
 - **Python** (Pandas, SQLite3, Matplotlib/Seaborn)
 - **SQL** (for querying HR database)
 - **Streamlit** (for interactive dashboard)

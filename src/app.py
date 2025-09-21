@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 df = pd.read_csv('WA_Fn-UseC_-HR-Employee-Attrition.csv') 
 
 # #  local SQLite database file
-conn = sqlite3.connect('hr.db') 
+conn = sqlite3.connect('data/hr.db')  
 cursor = conn.cursor()
 # # Insert DataFrame into SQLite table named 'employee'
 df.to_sql('employee', conn, index=False, if_exists='replace')  # replace table if it exists

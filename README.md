@@ -90,10 +90,10 @@ If not, run your data preparation notebook (analysis.ipynb) first to generate it
 
 ### 5. Run the app (Streamlit)
 ```bash
- python app.py
+streamlit run dashboard.py
 ```
 ```bash
-streamlit run dashboard.py
+ python app.py
 ```
 ---
 ## Author& Acknowledgments

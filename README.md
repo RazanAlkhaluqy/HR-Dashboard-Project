@@ -13,6 +13,10 @@ In this project, we:
 - Answer business questions with **SQL queries**
 - Perform analysis with **Pandas**
 - Visualize results in an interactive **Streamlit dashboard**
+---
+##  Data Source & Dictionary
+Dataset Source: [Kaggle - HR Analytics Employee Attrition Dataset](https://www.kaggle.com/ 
+https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
 
 ---
 ## 🔑 Key Features

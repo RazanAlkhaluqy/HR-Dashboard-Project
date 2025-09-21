@@ -13,7 +13,7 @@ This project analyzes employee attrition using **SQL, Python(Pandas), and Stream
 - [Project Overview](#-Project-Overview)
 - [Data Source & Dictionary](#data-source--dictionary)
 - [Key Features](#key-features)
-- [Tech Stack](#-Tech-Stack)
+- [Tech Stack](#-tech-stack)
 - [Installation & Usage](#-installation--usage)
 - [License](#license)
 - [Author & Acknowledgments](#-author--acknowledgments)
@@ -38,7 +38,7 @@ Dataset Source: ( https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics
 
 ---
 
-## 🛠️Tech Stack
+## 🛠️ Tech Stack
 - **Python** (Pandas, SQLite3, Matplotlib/Seaborn)
 - **SQL** (for querying HR database)
 - **Streamlit** (for interactive dashboard)

@@ -26,6 +26,7 @@ In this project, we:
 - Answer business questions with **SQL queries**
 - Perform analysis with **Pandas**
 - Visualize results in an interactive **Streamlit dashboard**
+
 **Value Provided:**  
 - Helps HR identify high-risk employee segments and factors contributing to attrition  
 - Provides actionable insights to improve retention strategies and workforce planning  

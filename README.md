@@ -79,7 +79,15 @@ If not, run your data preparation notebook (analysis.ipynb) first to generate it
 streamlit run dashboard.py
 ```
 ---
-### 6. Author & Acknowledgments
+### 6. 👩‍💻Author & Acknowledgments
+
+**Author:** Razan Zaki  
+
+**Acknowledgments:**  
+- I would like to thank [Kaggle](https://www.kaggle.com/) for providing the HR dataset used in this project, which is licensed under the [Open Data Commons Database License (ODbL 1.0)](https://opendatacommons.org/licenses/dbcl/1-0/).  
+- Special thanks to my mentors Mr. Osamah Sarraj and director Mr. Mohammed Sharaf, for their guidance and support throughout the project.  
+
+This project was developed as part of an HR analytics analysis and dashboard to help organization understand employee attrition trends.
 
 ---
 ## 📜 License

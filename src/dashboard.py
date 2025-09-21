@@ -286,8 +286,8 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # --- Global Variables & Setup ---
-DB_NAME = 'hr.db'
-CSV_PATH = 'WA_Fn-UseC_-HR-Employee-Attrition.csv'
+DB_NAME = 'data/hr.db'
+CSV_PATH = 'data/WA_Fn-UseC_-HR-Employee-Attrition.csv'
 
 # Use st.cache_resource for the database connection
 @st.cache_resource

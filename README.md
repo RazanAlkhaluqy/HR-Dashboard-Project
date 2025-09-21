@@ -15,7 +15,7 @@ This project analyzes employee attrition using **SQL, Python(Pandas), and Stream
 - [Tech Stack](#tech-stack)
 - [Installation & Usage](#-installation--usage)
 - [License](#-license)
-- [Author & Acknowledgments](#-author--acknowledgments)
+- [Author & Acknowledgments](#author--acknowledgments)
 ---
 ## 📊 Project Overview
 Employee attrition (turnover) is a critical challenge for organizations.  
@@ -79,7 +79,7 @@ If not, run your data preparation notebook (analysis.ipynb) first to generate it
 streamlit run dashboard.py
 ```
 ---
-### 6. 👩‍💻Author & Acknowledgments
+## 👩‍💻Author & Acknowledgments
 
 **Author:** Razan Zaki  
 

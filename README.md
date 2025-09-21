@@ -18,13 +18,18 @@ This project analyzes employee attrition using **SQL, Python(Pandas), and Stream
 - [Author & Acknowledgments](#author--acknowledgments)
 ---
 ## 📊 Project Overview
-Employee attrition (turnover) is a critical challenge for organizations.  
+Employee attrition (turnover) is a major challenge for organizations, as it can lead to increased recruitment costs, loss of institutional knowledge, and reduced team productivity.  
+This project aims to help HR departments understand the factors that drive employee attrition and make informed decisions to improve retention strategies.
 In this project, we:
 - Load and clean HR dataset
 - Store data in an SQLite database
 - Answer business questions with **SQL queries**
 - Perform analysis with **Pandas**
 - Visualize results in an interactive **Streamlit dashboard**
+**Value Provided:**  
+- Helps HR identify high-risk employee segments and factors contributing to attrition  
+- Provides actionable insights to improve retention strategies and workforce planning  
+- Combines SQL, Python, and interactive visualization to create a robust, user-friendly analytics tool
 ---
 ## Data Source & Dictionary
 Dataset Source: ( https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)

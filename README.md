@@ -33,8 +33,13 @@ In this project, we:
 - Combines SQL, Python, and interactive visualization to create a robust, user-friendly analytics tool
 ---
 ## Data Source & Dictionary
-Dataset Source: ( https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
-Provide a brief data dictionary explaining some of the most important columns.
+Dataset Source: ( https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset).
+This dataset contains employee information from Atlas Lab, including HR attributes, performance, and satisfaction. Key columns include:
+- **EmployeeID, FirstName, LastName, Gender, Age, Department, Salary, OverTime, Attrition** – basic employee info and turnover status  
+- **PerformanceRating, SelfRating, ManagerRating** – employee performance metrics  
+- **EnvironmentSatisfaction, JobSatisfaction, RelationshipSatisfaction, WorkLifeBalance** – satisfaction levels  
+- **YearsAtCompany, YearsInMostRecentRole, YearsSinceLastPromotion, YearsWithCurrManager** – tenure metrics  
+- **EducationLevel, StockOptionLevel, BusinessTravel, DistanceFromHome** – additional HR attributes
 
 ---
 ## 🔑Key Features

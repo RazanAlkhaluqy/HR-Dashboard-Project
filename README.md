@@ -89,11 +89,11 @@ Make sure your SQLite database (employee.db) is in the project folder.
 If not, run your data preparation notebook (analysis.ipynb) first to generate it.
 
 ### 5. Run the app (Streamlit)
-to run and see web page in dashboard.py
+To run and see the interactive dashboard in the browser:
 ```bash
 streamlit run dashboard.py
 ```
-to view the analysis results and conclusion in analysis.ipynb
+to view the analysis results and conclusion in Jupyter Notebook:
 ```bash
 jupyter notebook analysis.ipynb
 ```

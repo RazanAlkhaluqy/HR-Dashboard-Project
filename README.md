@@ -91,7 +91,7 @@ If not, run your data preparation notebook (analysis.ipynb) first to generate it
 ### 5. Run the app (Streamlit)
 To run and see the interactive dashboard in the browser:
 ```bash
-streamlit run dashboard.py
+streamlit run src/dashboard.py
 ```
 to view the analysis results and conclusion in Jupyter Notebook:
 ```bash
@@ -102,7 +102,7 @@ If you don’t have Jupyter installed, you can run:
 pip install notebook
 ```
 ```bash
- python app.py
+ python src/app.py
 ```
 ---
 ## Author& Acknowledgments

@@ -26,7 +26,7 @@ In this project, we:
 - Store data in an SQLite database
 - Answer business questions with **SQL queries**
 - Perform analysis with **Pandas**
-- Visualize results in an interactive **Streamlit dashboard**
+- Visualize results in an interactive **Streamlit dashboard** 
 
 **Value Provided:**  
 - Helps HR identify high-risk employee segments and factors contributing to attrition  
@@ -89,11 +89,20 @@ Make sure your SQLite database (employee.db) is in the project folder.
 If not, run your data preparation notebook (analysis.ipynb) first to generate it.
 
 ### 5. Run the app (Streamlit)
+To run and see the interactive dashboard in the browser:
 ```bash
-streamlit run dashboard.py
+streamlit run src/dashboard.py
+```
+to view the analysis results and conclusion in Jupyter Notebook:
+```bash
+jupyter notebook analysis.ipynb
+```
+If you don’t have Jupyter installed, you can run:
+```bash
+pip install notebook
 ```
 ```bash
- python app.py
+ python src/app.py
 ```
 ---
 ## Author& Acknowledgments
@@ -101,7 +110,7 @@ streamlit run dashboard.py
 **Author:** Razan Zaki  
 
 **Acknowledgments:**  
-- I would like to thank [Kaggle](https://www.kaggle.com/) for providing the HR dataset used in this project, which is licensed under the [Open Data Commons Database License (ODbL 1.0)](https://opendatacommons.org/licenses/dbcl/1-0/).  
+- I would like to thank [Kaggle](https://www.kaggle.com/) for providing the HR dataset used in this project.  
 - Special thanks to my mentors Mr. Osamah Sarraj and director Mr. Mohammed Sharaf, for their guidance and support throughout the project.  
 
 This project was developed as part of an HR analytics analysis and dashboard to help organization understand employee attrition trends.
